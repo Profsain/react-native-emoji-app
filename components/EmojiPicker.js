@@ -4,14 +4,14 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 const EmojiPicker = ({ isVisible, children, onClose}) => {
   return (
       <Modal animationType='slide' transparent={true} visible={isVisible}>
-          <View style={StyleSheet.modalContent}>
-              <View style={StyleSheet.titleContainer}>
-                    <Text style={StyleSheet.title}>Pick an emoji</Text>
+          <View style={styles.modalContent}>
+              <View style={styles.titleContainer}>
+                    <Text style={styles.title}>Pick an emoji</Text>
                     <Pressable onPress={onClose}>
                         <MaterialIcons name="close" size={24} color="#fff" />
                     </Pressable>
               </View>
-              <View style={StyleSheet. pickerContainer}>
+              <View style={styles.pickerContainer}>
                   {children}
               </View>
           </View>

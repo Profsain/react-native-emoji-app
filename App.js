@@ -8,6 +8,8 @@ import ImageViewer from './components/ImageViewer';
 import IconButton from './components/IconButton';
 import CircleButton from './components/CircleButton';
 import EmojiPicker from './components/EmojiPicker';
+import EmojiList from './components/EmojiList';
+import EmojiSticker from './components/EmojiSticker';
 
 const placeholderImage = require('./assets/images/bacgroundImage.png');
 
@@ -15,6 +17,7 @@ export default function App() {
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pickedEmoji, setPickedEmoji] = useState(null);
 
   // handle image picker from device
   const pickImageAsync = async () => {
@@ -58,6 +61,9 @@ export default function App() {
           placeholderImageSource={placeholderImage}
           selectedImage={selectedImage}
         />
+
+        {/* emoji sticker */}
+        {pickedEmoji !== null ? (<EmojiSticker imageSize={40} stickerSource={pickedEmoji}/>) : null}
       </View>
 
       {/* conditional rendering */}
@@ -78,7 +84,7 @@ export default function App() {
 
       {/* emoji picker */}
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        <Text>Emoji picker</Text>
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="auto" />
     </View>
